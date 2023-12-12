@@ -1,0 +1,7 @@
+---
+applications:
+- name: sectionOne_sectionOne
+  memory: 1024M
+  host: family
+  domain: paastasict.kr
+  buildpack: hppt://api.paastasict.kr

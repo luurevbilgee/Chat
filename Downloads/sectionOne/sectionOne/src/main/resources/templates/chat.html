@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <style type="text/css">
+    	/* navbar styling*/
+			*{
+				box-sizing: border-box;
+				margin:0;
+				padding:0;
+			}
+			body{
+				font-family:Arial, Helvetica, sans-serig;
+				font-size: 14px;
+				line-height:1.8;
+			}
+			a{
+				text-decoration:none;
+			}
+			.navbar{
+				list-styles:none;
+				margin:0 ;
+				padding:0;
+				background: #cbe9fe;
+				border-radius: 5px;
+				overflow: auto;
+			}
+			.navbar li{
+				float: left;
+			}
+			.navbar li a{
+				color: #000;
+				display:block;
+				text-decoration: none;
+				padding:15px;
+			}
+			.navbar li a:hover{
+				background-color: #010919;
+				color: #999;
+			}
+			h2{
+				text-shadow: 3px 3px 6px green;
+				text-align:center;
+			}
+			.sendContainer{
+				position:static;
+				display:block;
+				max-width:400px;
+				margin:30px auto;
+				background-color: #f9f9f9;
+				border-radius:5px;
+				float:center;
+				margin-top:8%;
+			}
+			.sendContainer label{
+				font-size:20px;
+				margin:10px;
+				font-style:bold;
+			}
+			.sendContainer #selectedUser{
+				margin:20px;
+				font-size:16px;
+			}
+			.sendContainer button{
+				padding:15px;
+				font-size:20px;
+				margin-left:35%;
+				border-radius:5px;
+			}
+			.sendContainer button:hover{
+				background-color: green;
+			}
+			.container{
+				margin:50px auto;
+				aspect-ratio:2/1;
+				max-width:800px;
+				border:solid black 2px;
+				overflow-x:hidden;
+				overflow-y:scroll;
+				white-space:nowrap;
+				scroll-snap-type:y mandatory;
+				float:center;
+				
+			}
+			.container table{
+				position: static;
+				right:0;
+				bottom:0;
+				float:right
+			}
+			.container td{
+				margin-left:30px;
+				padding-left:30px;
+				font-style:italy;
+			}
+    
+    </style>
+    <title>Family chat</title>
+</head>
+<body>
+<header>
+		<ul class="navbar">
+			<li><a href="/">Home</a>
+			<li><a href="/about">Миний талаар</a>
+			<li><a href="/chat">chat</a>
+			<li><a href="/register">Бүртгүүлэх</a>
+		</ul>
+	</header>
+    <h2>Messages</h2>
+    <div  class = "container">
+    	<div>
+    		<form class = "messageForm">
+    			<table>
+			        <tbody>
+			            <tr th:each="user:${message}">
+			                <td th:text="${user.message}">:</td>
+			                <td th:text="${user.userName}"></td>
+			                <!-- Add other fields if needed -->
+			            </tr>
+			        </tbody>
+			    </table>
+			 </form>
+    	</div>
+    </div>
+	<div class = "sendContainer">
+	    <form th:action="@{/send/message}" method="post" >
+	    	<div>
+		        <label for="message">Send a message:</label>
+		        <input type="text" id="message" name="message"  required>
+	        </div>
+	        <div>
+	        	   <label for="keyword">Search:</label>
+			       <select id="selectedUser" name="userName">
+	            	<option th:each="user : ${users}" 
+	            			th:value="${user.name}" 
+	            			th:text="${user.name}" 
+	            			></option>
+	        		</select>
+	       		 	
+	        </div>
+	        <div>
+	        <button type="submit">Send</button>
+	        </div>
+	    </form>
+    </div>
+    
+</body>
+</html>

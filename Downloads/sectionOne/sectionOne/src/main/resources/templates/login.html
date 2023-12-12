@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en"   xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Family chat</title>
+	<style type="text/css">
+			/* navbar styling*/
+		*{
+			box-sizing: border-box;
+			margin:0;
+			padding:0;
+		}
+		body{
+			font-family:Arial, Helvetica, sans-serig;
+			font-size: 14px;
+			line-height:1.8;
+		}
+		a{
+			text-decoration:none;
+		}
+		.navbar{
+			list-styles:none;
+			margin:0 ;
+			padding:0;
+			background: #cbe9fe;
+			border-radius: 5px;
+			overflow: auto;
+		}
+		.navbar li{
+			float: left;
+		}
+		.navbar li a{
+			color: #000;
+			display:block;
+			text-decoration: none;
+			padding:15px;
+		}
+		.navbar li a:hover{
+			background-color: #010919;
+			color: #999;
+		}
+		.container{
+			margin:50px auto;
+			max-width:400px;
+			padding:20px;
+		}
+		.form-wrap{
+			border-radius:5px;
+			background: #cbe9fe;
+			padding: 15px  25px;
+			color: #333;
+		}
+		.from-wrap h6, .form-wrap p{
+			text-align:center;
+		}
+		.form-wrap .form-group{
+			margin-top:15px;
+		}
+		.form-wrap .form-group label{
+			display:block;
+		}
+		.form-wrap .form-group input{
+			width:100%;
+			padding:10px;
+			border: #ddd 1px solid;
+			border-radius:5px;
+		}
+		.form-wrap button{
+			width: 100%;
+			display: block;
+			background-color: #49c1a2;
+			padding:  10px;
+			margin-top:20px;
+			color: #fff;
+			cursor:pointer;
+		}
+		.form-wrap button:hover{
+			background-color:#37a08e;
+		}
+		.footer{
+			text-align: center;
+			margin-top: 10px;
+		}
+		.footer a{
+			color:#49c1a2;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<ul class="navbar">
+			<li><a href="/home">Home</a>
+			<li><a href="/about">About</a>
+		</ul>
+	</header>
+	<div class="container">
+		<div class="form-wrap">
+			<form 
+					class="px-4 py-3" 
+					action="@{/login}" 
+					method="post" 
+					>
+					<div class="form-group">
+					  <label class="input-group-text" id="basic-addon1" for="email">Email </label>
+					  <input 
+					  		type="text" 
+					  		class="form-control" 
+					  		id="username" 
+					  		placeholder="name@example.com" 
+					  		name="email"  
+					  		th:name="${_csrf.parameterName}" th:value="${_csrf.token}"
+					  		required>
+					</div>
+					<div class="form-group">
+						<label for="inputPassword5" class="form-label">Password</label>
+						<input 
+							type="password" 
+							id="password" 
+							class="form-control" 
+							aria-describedby="passwordHelpBlock" 
+							name="password"   
+							required>
+					</div >
+					<div class="form-group">
+						<button class="button-login" type="submit">Нэвтрэх</button>
+					</div>
+				</form>
+				<div th:if="${error}">
+				 Unable to login. Check your username and password.
+				 </div>
+				<footer>
+					<p>
+					"Бүртгэлгүй бол " <a href="/register">Бүртгүүлэх</a>
+				</footer>
+		</div>
+	</div>
+</body>
+</html>s
