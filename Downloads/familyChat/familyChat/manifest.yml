@@ -1,0 +1,7 @@
+---
+applications:
+- name: familyChat-194101
+  memory: 2048M
+  host: familychat-194101
+  domain: paastasict.kr
+  buildpack: htpps://api.paastasict.kr

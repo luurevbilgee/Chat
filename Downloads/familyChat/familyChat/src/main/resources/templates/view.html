@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+	<title>Family chat</title>
+	<link rel="stylesheet" type="text/css" href="/home.css">
+</head>
+<body style="font-family:Monospace">
+	 <header>
+		<ul class="navbar">
+			<li><a href="/">Home</a>
+			<li><a href="/about">Миний талаар</a>
+			<li><a href="/chat">chat</a>
+			<li><a href="/register">Бүртгүүлэх</a>
+		</ul>
+	</header>
+
+	<center><h1>Хэрэглэгч</h1></center>
+ 	<div class="container mt-5"> 
+ 		<p th:text="${user.name}"> </p>
+ 		<p th:text="${user.email}"> </p>
+        
+    </div>
+
+</body>
+</html>

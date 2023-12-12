@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Family chat</title>
+	<link rel="stylesheet" type="text/css" href="/home.css">
+</head>
+<body>
+	<header>
+		<ul class="navbar">
+			<li><a href="/">Home</a>
+			<li><a href="/about">Миний талаар</a>
+			<li><a href="/chat">chat</a>
+			<li><a href="/register">Бүртгүүлэх</a>
+		</ul>
+	</header>
+	<div class="container">
+		<table>
+	        <thead>
+	            <tr>
+	                <th>Хэрэлгэчийн нэр</th>
+	                <th>Имейл хаяг</th>
+	                <th></th>
+	                <!-- Add other fields if needed -->
+	            </tr>
+	        </thead>
+	        <tbody>
+	            <tr th:each="user : ${user}">
+	                <td th:text="${user.name}"></td>
+	                <td th:text="${user.email}"></td>
+	                <td> <a class="btn btn-sm btn-danger" th:href="@{/profile/{id}(id=${user.id})}">View</a> | <a class="btn btn-sm btn-danger" th:href="@{/edit/{id}(id=${user.id})}">Edit</a>  | <a class="btn btn-sm btn-danger" th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>
+	                <!-- Add other fields if needed -->
+	            </tr>
+	        </tbody>
+	    </table>
+    </div>
+</body>
+</html>

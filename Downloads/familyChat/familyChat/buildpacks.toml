@@ -1,0 +1,5 @@
+[[buildpacks]]
+name = "java_buildpack"
+
+[[buildpacks]]
+name = "nodejs_buildpack"
